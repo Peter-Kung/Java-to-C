@@ -1,0 +1,8 @@
+bison -d -o j_parse.c j_parse.y
+gcc -c -o main.o main.c
+gcc -c -o j_tree.o j_tree.c
+gcc -c -o j_parse.o j_parse.c
+flex -oj_lex.c j_lex.l
+gcc -c -o j_lex.o j_lex.c
+gcc -o j2c main.o j_tree.o j_parse.o j_lex.o
+j2c test1.j
